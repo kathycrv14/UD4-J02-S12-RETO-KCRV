@@ -1,0 +1,93 @@
+<section class="sectionGeneral">
+    <section class="sectionForm">
+        <h1>FORM DATA</h1>
+        <section class="container-sm">
+            <!--FORM-->
+            
+            <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+                <!-- NOMBRE -->
+                <section class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <section>
+                        <input type="text" class="form-control" formControlName="nombres" required pattern="[a-zA-Z]+" maxlength="{a-z}">
+                        <section *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)" class="">
+                            <section *ngIf="nombres?.errors?.['required']" class="alert alert-danger alertaInput">
+                                <p>El nombre es obligatorio</p>
+                            </section>
+                            <section *ngIf="nombres?.errors?.['pattern']" class="alert alert-warning alertaInput">
+                                <p>El nombre debe ser solo letras</p>
+                            </section>
+                        </section>                        
+                    </section>
+                </section>
+
+                <!--*****-->
+
+                <!-- APELLIDO -->
+                <section class="form-group">
+                    <label for="apellidos">Apellido:</label>
+                    <section>
+                        <input type="text" class="form-control" formControlName="apellidos" required pattern="[a-zA-Z]+" maxlength="{a-z}">
+                        <section *ngIf="apellidos?.invalid && (apellidos?.dirty || apellidos?.touched)" class="">
+                            <section *ngIf="apellidos?.errors?.['required']" class="alert alert-danger alertaInput">
+                                <p>El apellido es obligatorio</p>
+                            </section>
+                            <section *ngIf="apellidos?.errors?.['pattern']" class="alert alert-warning alertaInput">
+                                <p>El apellido debe ser solo letras</p>
+                            </section>
+                        </section>                        
+                    </section>
+                </section>
+                <!--*****-->
+
+                <!-- DNI -->
+                <section class="form-group">
+                    <label for="dni">DNI:</label>
+                    <section>
+                        <input type="text" class="form-control" formControlName="dni" required pattern="[0-9]{8}" maxlength="8">
+                        <section *ngIf="dni?.invalid && (dni?.dirty || dni?.touched)" class="">
+                            <section *ngIf="dni?.errors?.['required']" class="alert alert-danger alertaInput">
+                                <p>El DNI es obligatorio</p>
+                            </section>
+                            <section *ngIf="dni?.errors?.['pattern']" class="alert alert-warning alertaInput">
+                                <p>El DNI debe ser solo digitos</p>
+                            </section>
+                        </section>                        
+                    </section>
+                </section>
+                <!--*****-->
+
+                <!-- PAIS -->
+                <section class="form-group">
+                    <label for="pais">Pais:</label>
+                    <section>
+                        <select name="" id="" class="form-select" formControlName="pais" value="selected" required>
+                            <option value="" selected>Selecciona tu pais</option>
+                            <option value="peru">Peru</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="chile">Chile</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="brasil">Brasil</option>
+                        </select>
+                        <section *ngIf="pais?.invalid && (pais?.dirty || pais?.touched)" class="">
+                            <section *ngIf="pais?.errors?.['required']" class="alert alert-danger alertaInput">
+                                <p>Debe seleccionar un pais</p>
+                            </section>
+                        </section> 
+                    </section>
+                </section>
+                <!--*****-->
+
+                <!-- BOTONES -->
+                <section class="sectionSubmit">
+                    <input type="submit" value="Submit" class="btn btn-primary text-white" [disabled]="!registroForm.valid">
+                </section>
+
+                <section name="" id="" class="form-group mensaje" name="mensaje">
+                    <p>{{ mensaje }}</p>
+                </section>
+            </form>
+        </section>
+    </section>
+</section>
+
